@@ -12,58 +12,40 @@
   };
 
   onDOMReady(() => {
-    const title =
-      currentScript.getAttribute("title") || "We stand with Palestine";
+    const title = currentScript.getAttribute("title");
 
-    const ribbonBanner = document.createElement("div");
-    ribbonBanner.setAttribute("id", "we-stand-with-palestine");
+    const banner = document.createElement("div");
 
-    Object.assign(ribbonBanner.style, {
-      width: "300px",
-      height: "84px",
-      position: "fixed",
-      left: "-80px",
-      bottom: "20px",
-      transform: "rotate(45deg)",
-      zIndex: "999",
-      background: `linear-gradient(to bottom,
-              #000000 0%, #000000 33.33%,
-              #ffffff 33.33%, #ffffff 66.66%,
-              #007a3d 66.66%, #007a3d 100%)`,
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-    });
-
-    const text = document.createElement("div");
-    text.textContent = title;
-    Object.assign(text.style, {
-      position: "absolute",
-      top: "33.33%",
-      height: "33.33%",
+    Object.assign(banner.style, {
       width: "100%",
+      height: "15px",
+      position: "fixed",
+      top: "0",
+      left: "0",
+      zIndex: "9999",
+      background: `linear-gradient(to bottom,
+      #333333 0%, #333333 50%,
+      #4CAF50 50%, #4CAF50 100%)`,
+
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      textAlign: "center",
-      fontWeight: "500",
-      color: "#000",
-
+      fontWeight: "600",
+      fontSize: "14px",
       fontFamily:
         "Segoe UI, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
-
-      fontSize: "14px",
+      color: "#000",
+      cursor: "pointer",
+      textAlign: "center",
     });
 
-    ribbonBanner.addEventListener("click", () => {
-      ribbonBanner.remove();
+    banner.textContent = title;
+    banner.title = "I stand with the people of palestine (Tap to remove)";
+
+    banner.addEventListener("click", () => {
+      banner.remove();
     });
 
-    ribbonBanner.title = "Tap to remove";
-    ribbonBanner.appendChild(text);
-
-    document.body.appendChild(ribbonBanner);
-
-    //!TODO:- Auto hide while overlapping content underneath the ribbon banner
+    document.body.appendChild(banner);
   });
 })();
